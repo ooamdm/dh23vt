@@ -1,16 +1,12 @@
-/* src/index.css */
+/* app/globals.css (hoặc tên file CSS toàn cục của bạn) */
 
-/* 1. Import các fonts từ Google Fonts 
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');*/
-/*Importing custom fonts for the application*/
+/* 1. Import các fonts từ Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap');
-.test-signature {
-    font-family: 'Dancing Script', sans-serif;}
+
 /* 2. Import Tailwind CSS */
 @import "tailwindcss";
-/* Custom scrollbar from original style.css */
 
+/* Custom scrollbar */
 body {
     font-family: 'Inter', sans-serif;
     background-color: #f3f4f6; /* gray-100 */
@@ -33,22 +29,21 @@ body {
     background: #555;
 }
 
-/* Styles for table header sort icons from original style.css */
+/* Các styles tuỳ chỉnh khác cho ứng dụng */
+.test-signature {
+    font-family: 'Dancing Script', sans-serif;
+}
 .sort-icon {
     opacity: 0.5;
     transition: opacity 0.2s;
     margin-left: 0.5rem;
 }
-
 .sort-icon:hover {
     opacity: 1;
 }
-
 .th-sortable {
     cursor: pointer;
 }
-
-/* Custom styles adapted from original index (2).html <style> tag */
 .card-custom {
     transition: transform 0.2s ease-in-out;
 }
@@ -68,16 +63,16 @@ body {
     background-color: #357AE8;
 }
 
-/* Responsive adjustments from original index (2).html */
-@media (max-width: 575.98px) { /* For extra small screens (mobile) */
+/* Responsive adjustments */
+@media (max-width: 575.98px) {
     .search-refresh-group .input-group {
-        width: 100%; /* Ensure input takes full width */
-        margin-bottom: 1rem; /* Space between input and refresh button */
+        width: 100%;
+        margin-bottom: 1rem;
     }
     .search-refresh-group .btn {
-        width: 100%; /* Ensure button takes full width */
+        width: 100%;
     }
     .project-selector .btn {
-        margin-bottom: 0.5rem; /* Space between project selection buttons */
+        margin-bottom: 0.5rem;
     }
 }
