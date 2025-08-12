@@ -1,8 +1,7 @@
 // postcss.config.js
-export default {
+module.exports = {
   plugins: {
-    // Đây là nơi bạn kích hoạt plugin PostCSS của Tailwind
-    '@tailwindcss/postcss': {}, 
+    tailwindcss: {},
     autoprefixer: {},
   },
 };
