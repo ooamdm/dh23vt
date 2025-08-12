@@ -1,0 +1,35 @@
+├── .firebase
+│  └── hosting.ZGlzdA.cache
+├── .firebaserc
+├── .gitignore
+├── apis
+│  └── auth.js
+├── app
+│  ├── layout.jsx
+│  └── login
+│    └── page.jsx
+├── App.jsx
+├── components
+│  ├── common
+│  │  └── LoadingSpinner.js
+│  └── Dashboard
+│    ├── DashboardHeader.jsx
+│    ├── DataTable.jsx
+│    └── StatsCards.jsx
+├── firebase.json
+├── layouts
+│  └── index.css
+├── my-project-structure.tree
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── public
+│  └── assets
+├── README.md
+├── services
+│  ├── firebase-configs.js
+│  └── firestore.js
+├── tailwind.config.js
+├── tree.md
+└── utils
+  └── helpers.js

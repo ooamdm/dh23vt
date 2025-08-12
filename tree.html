@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hướng Dẫn Sử Dụng Struct CLI</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f6f8; /* Light gray background */
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2c5282; /* Darker blue for headings */
+        }
+        h2 {
+            color: #3182ce; /* Blue for subheadings */
+            border-bottom: 2px solid #ebf4ff; /* Light border under subheadings */
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        h3 {
+            color: #4a5568; /* Grayish blue for sub-subheadings */
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        .code-block-container {
+            position: relative;
+            background-color: #2d3748; /* Darker gray for code background */
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            overflow-x: auto; /* Allow horizontal scrolling for long lines */
+        }
+        .code-block-container pre {
+            margin: 0;
+            color: #e2e8f0; /* Light text color for code */
+            font-size: 0.9rem;
+            white-space: pre-wrap; /* Preserve whitespace and wrap lines */
+            word-break: break-all; /* Break long words */
+        }
+        .copy-button {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background-color: #4299e1; /* Blue button */
+            color: white;
+            padding: 0.35rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            border: none;
+            outline: none;
+        }
+        .copy-button:hover {
+            background-color: #3182ce; /* Darker blue on hover */
+        }
+        .example-text {
+            background-color: #f7fafc; /* Lighter background for example text */
+            border-left: 4px solid #a0aec0; /* Gray left border */
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container rounded-xl shadow-lg">
+        <h1 class="text-4xl font-extrabold mb-6 text-center">Hướng Dẫn Sử Dụng Công Cụ CLI <span class="text-indigo-600">`struct`</span></h1>
+
+        <p class="text-lg mb-8 text-gray-700">
+            Công cụ <code class="bg-gray-200 px-1 py-0.5 rounded text-sm font-semibold">struct</code> CLI giúp bạn quản lý cấu trúc thư mục dự án một cách hiệu quả. Nó có hai chức năng chính: <strong class="text-blue-600">tạo bản đồ cấu trúc từ thư mục hiện có</strong> và <strong class="text-blue-600">xây dựng thư mục/file dựa trên một bản đồ cấu trúc</strong>.
+        </p>
+
+        <hr class="my-8 border-t-2 border-gray-200">
+
+        <h2 class="text-3xl font-bold mb-4">Chức năng 1: Tạo cấu trúc cây từ một thư mục 🌳</h2>
+        <p class="mb-6 text-gray-700">
+            Chức năng này cho phép bạn <strong class="text-indigo-600">tạo một bản đồ cấu trúc thư mục của dự án hiện tại và xuất ra một file</strong>. Điều này rất hữu ích khi bạn muốn ghi lại hoặc chia sẻ kiến trúc của một dự án.
+        </p>
+        <div class="example-text">
+            <strong class="font-semibold text-gray-800">Ví dụ:</strong> Bạn muốn tạo một file <code class="bg-gray-200 px-1 py-0.5 rounded text-sm font-semibold">my-project-structure.tree</code> từ thư mục hiện tại, nhưng muốn bỏ qua thư mục <code class="bg-gray-200 px-1 py-0.5 rounded text-sm font-semibold">dist</code>.
+        </div>
+
+        <h3 class="text-2xl font-semibold mb-3">1. Cài đặt</h3>
+        <p class="mb-4 text-gray-700">
+            Nếu bạn chưa cài đặt <code class="bg-gray-200 px-1 py-0.5 rounded text-sm font-semibold">struct</code> CLI, hãy mở terminal và chạy lệnh sau:
+        </p>
+        <div class="code-block-container">
+            <button class="copy-button" onclick="copyCode(this)">Sao chép</button>
+            <pre><code>npm i -g @structure-codes/cli</code></pre>
+        </div>
+
+        <h3 class="text-2xl font-semibold mb-3">2. Cú pháp lệnh</h3>
+        <p class="mb-4 text-gray-700">
+            Sử dụng lệnh <code class="bg-gray-200 px-1 py-0.5 rounded text-sm font-semibold">struct</code> với các tùy chọn phù hợp.
+        </p>
+        <ul class="list-disc list-inside mb-4 text-gray-700 pl-4">
+            <li class="mb-2"><code class="bg-gray-200 px-1 py-0.5 rounded text-sm font-semibold">-o &lt;tên_file_đầu_ra&gt;</code>: Chỉ định tên file <code class="bg-gray-200 px-1 py-0.5 rounded text-sm font-semibold">.tree</code> sẽ được tạo.</li>
+            <li><code class="bg-gray-200 px-1 py-0.5 rounded text-sm font-semibold">-i &lt;tên_thư_mục_bỏ_qua&gt;</code>: Bỏ qua (không bao gồm) một hoặc nhiều thư mục cụ thể.</li>
+        </ul>
+
+        <strong class="text-xl font-medium text-gray-800">Lệnh mẫu:</strong>
+        <div class="code-block-container mt-3">
+            <button class="copy-button" onclick="copyCode(this)">Sao chép</button>
+            <pre><code>struct -o my-project-structure.tree -i dist</code></pre>
+        </div>
+
+        <h3 class="text-2xl font-semibold mb-3">3. Kết quả</h3>
+        <p class="mb-6 text-gray-700">
+            Sau khi chạy lệnh, một file có tên <code class="bg-gray-200 px-1 py-0.5 rounded text-sm font-semibold">my-project-structure.tree</code> sẽ được tạo trong thư mục hiện hành của bạn. File này sẽ chứa cấu trúc cây của dự án, ngoại trừ thư mục <code class="bg-gray-200 px-1 py-0.5 rounded text-sm font-semibold">dist</code> đã được chỉ định bỏ qua.
+        </p>
+
+        <hr class="my-8 border-t-2 border-gray-200">
+
+        <h2 class="text-3xl font-bold mb-4">Chức năng 2: Xây dựng cấu trúc từ một file cây 🏗️</h2>
+        <p class="mb-6 text-gray-700">
+            Chức năng này thực hiện điều ngược lại: <strong class="text-indigo-600">nó sẽ tạo ra các thư mục và file dựa trên một file <code class="bg-gray-200 px-1 py-0.5 rounded text-sm font-semibold">.tree</code> có sẵn</strong>. Điều này rất tiện lợi khi bạn muốn tái tạo một cấu trúc dự án đã định nghĩa trước.
+        </p>
+        <div class="example-text">
+            <strong class="font-semibold text-gray-800">Ví dụ:</strong> Bạn có một file <code class="bg-gray-200 px-1 py-0.5 rounded text-sm font-semibold">frontend.tree</code> và muốn tạo cấu trúc này trong một thư mục mới tên là <code class="bg-gray-200 px-1 py-0.5 rounded text-sm font-semibold">new-website</code>.
+        </div>
+
+        <h3 class="text-2xl font-semibold mb-3">1. Cú pháp lệnh</h3>
+        <p class="mb-4 text-gray-700">
+            Sử dụng lệnh <code class="bg-gray-200 px-1 py-0.5 rounded text-sm font-semibold">struct build</code> với các tùy chọn.
+        </p>
+        <ul class="list-disc list-inside mb-4 text-gray-700 pl-4">
+            <li class="mb-2"><code class="bg-gray-200 px-1 py-0.5 rounded text-sm font-semibold">&lt;tên_file_đầu_vào.tree&gt;</code>: Tên file <code class="bg-gray-200 px-1 py-0.5 rounded text-sm font-semibold">.tree</code> chứa định nghĩa cấu trúc.</li>
+            <li><code class="bg-gray-200 px-1 py-0.5 rounded text-sm font-semibold">-d &lt;tên_thư_mục_đầu_ra&gt;</code>: Chỉ định thư mục nơi cấu trúc sẽ được tạo.</li>
+        </ul>
+
+        <strong class="text-xl font-medium text-gray-800">Lệnh mẫu:</strong>
+        <div class="code-block-container mt-3">
+            <button class="copy-button" onclick="copyCode(this)">Sao chép</button>
+            <pre><code>struct build frontend.tree -d new-website</code></pre>
+        </div>
+
+        <h3 class="text-2xl font-semibold mb-3">2. Kết quả</h3>
+        <p class="mb-6 text-gray-700">
+            Một thư mục có tên <code class="bg-gray-200 px-1 py-0.5 rounded text-sm font-semibold">new-website</code> sẽ được tạo ra, và bên trong đó sẽ có tất cả các thư mục và file theo cấu trúc đã định nghĩa trong file <code class="bg-gray-200 px-1 py-0.5 rounded text-sm font-semibold">frontend.tree</code> của bạn.
+        </p>
+    </div>
+
+    <script>
+        // Function to copy code to clipboard
+        function copyCode(buttonElement) {
+            // Find the pre tag which contains the code block
+            const codeBlock = buttonElement.nextElementSibling;
+            // Get the text content from the code block
+            const textToCopy = codeBlock.innerText;
+
+            // Create a temporary textarea element to copy the text
+            const textarea = document.createElement('textarea');
+            textarea.value = textToCopy;
+            // Append the textarea to the document body
+            document.body.appendChild(textarea);
+            // Select the text in the textarea
+            textarea.select();
+            
+            try {
+                // Execute the copy command
+                document.execCommand('copy');
+                // Change button text to indicate success
+                buttonElement.textContent = 'Đã sao chép!';
+                // Revert button text after 2 seconds
+                setTimeout(() => {
+                    buttonElement.textContent = 'Sao chép';
+                }, 2000);
+            } catch (err) {
+                // Log error if copy fails
+                console.error('Không thể sao chép văn bản: ', err);
+                // Change button text to indicate error
+                buttonElement.textContent = 'Lỗi!';
+            } finally {
+                // Remove the temporary textarea
+                document.body.removeChild(textarea);
+            }
+        }
+    </script>
+</body>
+</html>
